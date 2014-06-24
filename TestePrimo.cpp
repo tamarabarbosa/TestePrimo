@@ -1,3 +1,18 @@
+
+int calcula (int a,int num,int num2){
+	bool primo;
+	int q[];
+
+	q[0] = 2;
+	for (int i = 0; i < num/2 ; ++i){
+		q[i+1] = q[i] + 1;
+		for (int j = 0; j < (i+1); ++j){
+			if (){
+				q[i+1]++;
+			}
+		}
+	}
+}
 int main (){
 	
 	int num, a, num2, b;
@@ -12,7 +27,7 @@ int main (){
 		b = pow(a,num2)%num;
 		if (b==1){
 			printf("Testando seu numero para a base %d",a);
-			primo = calcula(a,num,num2);
+			primo = calcula(a,num2,num);
 			if (primo==1){
 				printf("Seu numero eh primo\n");
 			}
@@ -27,9 +42,10 @@ int main (){
 			else return 0;
 		}
 		else {
-			goto inicio;
+			printf("Seu numero nao eh primo\npois %d elevado a %d nao eh congruente a 1 modulo %d",a,num2,num);;
 		}
 
-	
+	gets();
+	return 0;	
 
 }
