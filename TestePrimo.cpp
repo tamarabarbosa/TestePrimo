@@ -1,9 +1,15 @@
 
 int calcula (int a,int num,int num2){
-	bool primo;
-	int q[];
+	bool primo = 1;
+	int q[],num3,num4;
 
 	q[0] = 2;
+	num3 = num2/q[i];
+	num4 = pow(a,num3);
+	if (num4%num == 1){
+		primo = 0;
+	}
+	
 	for (int i = 0; i < num/2 ; ++i){
 		q[i+1] = q[i] + 1;
 		for (int j = 0; j < (i+1); ++j){
@@ -11,9 +17,16 @@ int calcula (int a,int num,int num2){
 				q[i+1]++;
 			}
 		}
+		num3 = num2/q[i+1];
+		num4 = pow(a,num3);
+		if (num4%num == 1)
+		{
+			primo = 0;
+		}
 	}
-
+	return primo;
 }
+
 int main (){
 	
 	int num, a, num2, b;
