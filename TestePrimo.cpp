@@ -7,11 +7,12 @@ int calcula (int a,int num,int num2){
 	for (int i = 0; i < num/2 ; ++i){
 		q[i+1] = q[i] + 1;
 		for (int j = 0; j < (i+1); ++j){
-			if (){
+			if (q[i+1]%q[j]==0){
 				q[i+1]++;
 			}
 		}
 	}
+
 }
 int main (){
 	
