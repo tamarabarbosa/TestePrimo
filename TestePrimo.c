@@ -10,24 +10,30 @@ unsigned long int mod (unsigned long int a, unsigned long int b)
    return ret;
 }
 
-unsigned long int calcula (unsigned long int a,unsigned long int num,unsigned long int num2){
-	int i,j,primo = 1;
-	unsigned long int q[sqrt(num)+1],num3,num4;
+int calcula (unsigned long int a,unsigned long int num,unsigned long int num2){
+	int i,j,primo = 0;
+	unsigned long int q[300],num3,num4,aux;
 
 	q[0] = 2;
-	for (i = 0; i < sqrt(num); ++i)
-	{
-		q[i++] = q[i];
+	for (i = 0; i < (num/2); ++i){
+		q[i+1] = q[i];
 		loop:
-			q[i++]++;
-			for (j = 0; j < (i+1); ++j)
-			{
-				
+			q[i+1]++;
+			for (j = 0; j < (i+1); ++j){
+				aux = mod(q[i+1],q[j]);
+				if (aux==0){
+					goto loop;
+				}
 			}
-		
-
 	}
-	
+	for (i = 0; i < (num/2); ++i){
+		num3 = pow(a,(num2/q[i]));
+		num4 = mod(num3,num);
+		if (num4!=1){
+			primo = 1;
+		}
+	}
+	return primo;
 }
 
 int main (){
@@ -39,14 +45,12 @@ int main (){
 
 	num2 = num - 1;
 	inicio:
-		a = 2 + mod(rand(),num2);
+		a = 2;
 		b = pow(a,num2);
-		printf("%d\n",b );
 		c = mod(b,num);
-		printf("%d\n",c );
 		if (c==1){
 			printf("Testando seu numero para a base %d\n",a);
-			primo = calcula(a,num2,num);
+			primo = calcula(a,num,num2);
 			if (primo==1){
 				printf("Seu numero eh primo\n");
 			}
@@ -61,7 +65,7 @@ int main (){
 			else return 0;
 		}
 		else {
-			printf("Seu numero nao eh primo\npois %d elevado a %d nao eh congruente a 1 modulo %d\n",a,num2,num);;
+			printf("Seu numero nao eh primo\npois %d elevado a %d nao eh congruente a 1 modulo %d\n",a,num2,num);
 		}
 	return 0;	
 
